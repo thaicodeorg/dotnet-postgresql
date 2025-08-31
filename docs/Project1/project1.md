@@ -98,7 +98,7 @@ dotnet add src/Web/CleanArchDemo.Web.csproj package Microsoft.EntityFrameworkCor
 
 
 # ติดตั้ง dotnet-ef CLI tool (global)
-dotnet tool install --global dotnet-ef
+dotnet tool install --global dotnet-ef 
 ```
 
 # สร้าง DbContext (Infrastructure)
