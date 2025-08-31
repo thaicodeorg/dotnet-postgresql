@@ -94,18 +94,11 @@ dotnet add src/Infrastructure/CleanArchDemo.Infrastructure.csproj package Npgsql
 # EF Core runtime
 dotnet add src/Infrastructure/CleanArchDemo.Infrastructure.csproj package Microsoft.EntityFrameworkCore
 
+dotnet add src/Web/CleanArchDemo.Web.csproj package Microsoft.EntityFrameworkCore.Design
+
+
 # ติดตั้ง dotnet-ef CLI tool (global)
 dotnet tool install --global dotnet-ef
-```
-
-# ติดตั้ง EF Design package (ต่อโปรเจกต์)
-```
-dotnet add package Microsoft.EntityFrameworkCore.Design
-```
-
-# ติดตั้ง EF Provider (เช่น PostgreSQL)
-```
-dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
 ```
 
 # สร้าง DbContext (Infrastructure)

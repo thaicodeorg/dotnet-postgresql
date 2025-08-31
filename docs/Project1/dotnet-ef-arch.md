@@ -289,3 +289,19 @@ var loggingSection = builder.Configuration.GetSection("Logging");
 var defaultLogLevel = loggingSection["LogLevel:Default"];
 Console.WriteLine(defaultLogLevel); // Output: Information
 ```
+
+- **WorkFlow**
+```
+appsettings.json
+       |
+       v
+WebApplication.CreateBuilder(args)
+       |
+       v
+builder.Configuration
+       |
+       +--> GetSection / GetConnectionString / Options pattern
+       |
+       v
+ใช้ค่า config ใน Services / DbContext / Logic ต่าง ๆ
+```
