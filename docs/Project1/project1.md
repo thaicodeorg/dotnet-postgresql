@@ -186,5 +186,4 @@ dotnet ef migrations add InitialCreate --project src/Infrastructure --startup-pr
 
 # Update Database
 dotnet ef database update --project src/Infrastructure --startup-project src/Web
-
 ```

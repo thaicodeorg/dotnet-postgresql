@@ -234,3 +234,58 @@ dotnet ef database update
 - Migration Files → เก็บเป็น C# ไฟล์   
 - database update → dotnet-ef ส่งคำสั่ง  
 - Design Package แปลง SQL → PostgreSQL สร้างตารางจริง
+
+
+## appsettings.json คืออะไร
+- เป็นไฟล์ Configuration ของ โปรเจค .NET
+- เก็บข้อมูล ได้แก่
+    - Connection string
+    - API keys
+    - ค่า Setting
+    - 
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Port=5432;Database=mydb;Username=myuser;Password=mypassword"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning"
+    }
+  },
+  "MyCustomSetting": "HelloWorld"
+}
+```
+
+- WebApplication.CreateBuilder(args) จะ สร้าง Configuration object ให้เรียบร้อย
+- มันจะโหลดค่า config จากหลายแหล่ง:
+    - appsettings.json
+    - appsettings.{Environment}.json (เช่น appsettings.Development.json)
+    - Environment variables
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+```
+
+- หลังจากนี้ builder.Configuration พร้อมการใช้งาน
+
+```csharp
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString));
+```
+
+- ค่าอื่นๆ
+```
+var mySetting = builder.Configuration["MyCustomSetting"];
+Console.WriteLine(mySetting);  // Output: HelloWorld
+```
+
+- Seciton หลายค่า
+```csharp
+var loggingSection = builder.Configuration.GetSection("Logging");
+var defaultLogLevel = loggingSection["LogLevel:Default"];
+Console.WriteLine(defaultLogLevel); // Output: Information
+```
