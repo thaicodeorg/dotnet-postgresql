@@ -279,9 +279,9 @@ dotnet tool install --global dotnet-ef
 ```c++
 // src/Infrastructure/Persistence/AppDbContext.cs
 using Microsoft.EntityFrameworkCore;
-using CleanArchDemo.Domain.Entities;
+using MySolution.Domain.Entities;
 
-namespace CleanArchDemo.Infrastructure.Persistence;
+namespace MySolution.Infrastructure.Persistence;
 
 public class AppDbContext : DbContext
 {
@@ -295,7 +295,7 @@ public class AppDbContext : DbContext
 ##  สร้าง Entity (Domain)
 ```c++
 // src/Domain/Entities/User.cs
-namespace CleanArchDemo.Domain.Entities;
+namespace MySolution.Domain.Entities;
 
 public class User
 {
@@ -306,7 +306,7 @@ public class User
 
 ## ตั้งค่า EF ใน WebApi (Program.cs)
 ```c++
-using CleanArchDemo.Infrastructure.Persistence;
+using MySolution.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
